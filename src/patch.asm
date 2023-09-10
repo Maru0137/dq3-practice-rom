@@ -1,6 +1,6 @@
 hirom
 
-; enable debug menu
+; enable debug mode
 org $c02799
 db $80
 
