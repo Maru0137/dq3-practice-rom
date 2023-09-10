@@ -1,0 +1,21 @@
+set(PATCH patch.asm)
+
+set(ROM_FILENAME "DragonQuest3.smc")
+set(ROM_SOURCE_PATH ${DQ3PRAC_ROM_DIR}/${ROM_FILENAME})
+set(ROM_BINARY_PATH ${CMAKE_CURRENT_BINARY_DIR}/${ROM_FILENAME})
+
+add_custom_target(
+    copy_rom
+    COMMAND ${CMAKE_COMMAND} -E copy ${ROM_SOURCE_PATH} ${CMAKE_CURRENT_BINARY_DIR}
+    SOURCES ${ROM_SOURCE_PATH}
+    BYPRODUCTS ${ROM_BINARY_PATH}
+)
+
+add_custom_target(
+    patch
+    ALL
+    COMMAND ${asar_exe} --fix-checksum=off ${CMAKE_CURRENT_SOURCE_DIR}/${PATCH} ${ROM_BINARY_PATH}
+    DEPENDS copy_rom
+    SOURCES ${PATCH} ${ROM_BINARY_PATH}
+    BYPRODUCTS ${ROM_BINARY_PATH}
+)
