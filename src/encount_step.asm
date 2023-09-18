@@ -13,7 +13,6 @@
 ; └---------------------------------┘
 ;
 
-
 !RAM_ENCOUNT_STEP_OFFSET = $f796
 !SR_GET_ENCOUNT_TABLE_AND_DECREMENT_STEP_BASE = $c690a1  ; A = encount_table_id, X = encount_step_decrement_base, Y = ???
 
@@ -79,6 +78,12 @@ jmp $4eeb
 lda #$0000
 
 
-;; TODO: Fix prefix strings
-; org $c3ab30
-; db $95, $9e, $93  ; "ENC"
+; Prefix strings
+org $c3ab30
+db $95, $9e, $93  ; "ENC"
+
+org $c3ab35
+db $a4, $92, $ac  ; "TBL"
+
+org $c3ab3a
+db $94, $95, $93  ; "DEC"
