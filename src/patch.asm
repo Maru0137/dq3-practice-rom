@@ -6,11 +6,11 @@
 
 hirom
 
-!ROM_BASE = $c00000
-!WRAM_BASE = $7e0000
+!rom_base = $c00000
+!wram_base = $7e0000
 
 ; Game title
-org !ROM_BASE+$ffc0
+org !rom_base+$ffc0
 db "DRAGONQUEST3PRACTICE "
 
 incsrc "debug.asm"

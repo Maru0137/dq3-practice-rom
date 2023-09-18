@@ -1,9 +1,9 @@
 ; enable debug mode
-org !ROM_BASE+$2799
+org !rom_base+$2799
 db $80
 
-org !ROM_BASE+$1fffe
+org !rom_base+$1fffe
 db $ff, $ff
 
-org !ROM_BASE+$6fffa
+org !rom_base+$6fffa
 db $80
