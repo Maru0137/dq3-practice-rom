@@ -19,63 +19,69 @@
 ; $c35bc5: SR to describe coordinate window 
 ;; MX
 org $c38bd3
-jsl $c35079
+jsl draw_mx
 
 ;; MY
 org $c38bf0
-jsl $c3507f
+jsl draw_my
 
 ;; encount step remain
 org $c38c06
-jsl $c35085
+jsl draw_encount_step_remain
 
 ;; encount table
 org $c38c1c
-jsl $c3508b
+jsl draw_encount_table_id
 
 ;; encount step decrement base
 org $c38c32
 ldx #$0002   ; set number of whitespace
 org $c38c39
-jsl $c35094
+jsl draw_encount_step_decrement_base
 org $c38c3d
 ldx #$0003   ; set number of digit
 
 ;; last (dummy)
 org $c38c48
-jsl $c3509e
+jsl draw_dummy
 
 
 ; $c35079: SRs to describe values into window
 org $c35079
 
 ;; MX
-lda $c361
-jmp $4eeb
+draw_mx:
+    lda $c361
+    jmp $4eeb
 
 ;; MY
-lda $c363
-jmp $4eeb
+draw_my:
+    lda $c363
+    jmp $4eeb
 
 ;; encount step remain
-lda !RAM_ENCOUNT_STEP_OFFSET
-jmp $4eeb
+draw_encount_step_remain:
+    lda !RAM_ENCOUNT_STEP_OFFSET
+    jmp $4eeb
 
 ;; encount table id
-phy
-jsl !SR_GET_ENCOUNT_TABLE_AND_DECREMENT_STEP_BASE
-ply
-jmp $4eeb
+draw_encount_table_id:
+    phy
+    jsl !SR_GET_ENCOUNT_TABLE_AND_DECREMENT_STEP_BASE
+    ply
+    jmp $4eeb
 
 ;; encount step decrement base
-phy
-jsl !SR_GET_ENCOUNT_TABLE_AND_DECREMENT_STEP_BASE
-ply
-txa
-jmp $4eeb
+draw_encount_step_decrement_base:
+    phy
+    jsl !SR_GET_ENCOUNT_TABLE_AND_DECREMENT_STEP_BASE
+    ply
+    txa
+    jmp $4eeb
 
 ;; last (dummy)
-lda #$0000
+draw_dummy:
+    lda #$0000
 
 
 ; Prefix strings
