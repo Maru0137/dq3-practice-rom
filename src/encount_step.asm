@@ -6,9 +6,9 @@
 ; ┌---------------------------------┐
 ; |MX: <mx>                         |
 ; |MY: <my>                         |
-; |WX: <encount_step_remain>        |
-; |WY: <encount_table_id>           |
-; |ML: <encount_step_decrement_base>|
+; |ENC <encount_step_remain>        |
+; |TBL <encount_table_id>           |
+; |DEC <encount_step_decrement_base>|
 ; |                         00000000|
 ; └---------------------------------┘
 ;
