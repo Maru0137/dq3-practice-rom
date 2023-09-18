@@ -13,5 +13,7 @@ hirom
 org !rom_base+$ffc0
 db "DRAGONQUEST3PRACTICE "
 
+incsrc "define_window.asm"
+
 incsrc "debug.asm"
 incsrc "encount_step.asm"
